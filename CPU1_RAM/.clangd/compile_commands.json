@@ -1,0 +1,27 @@
+[
+   {
+      "directory" : "/Users/charlie/workspace_ccstheia/try_spi_/CPU1_RAM",
+      "command"   : "clang++ -I\"/Users/charlie/workspace_ccstheia/try_spi_\" -I\"/Users/charlie/ti/C2000Ware_5_04_00_00\" -I\"/Users/charlie/workspace_ccstheia/try_spi_/device\" -I\"/Users/charlie/ti/C2000Ware_5_04_00_00/driverlib/f28003x/driverlib/\" -I\"/Applications/ti/ccs2002/ccs/tools/compiler/ti-cgt-c2000_22.6.1.LTS/include\" -DDEBUG -DRAM -I\"/Users/charlie/workspace_ccstheia/try_spi_/CPU1_RAM/syscfg\" -DF28003x=1",
+      "file"      : "/Users/charlie/workspace_ccstheia/try_spi_/device/device.c"
+   },
+   {
+      "directory" : "/Users/charlie/workspace_ccstheia/try_spi_/CPU1_RAM",
+      "command"   : "clang++ -I\"/Users/charlie/workspace_ccstheia/try_spi_\" -I\"/Users/charlie/ti/C2000Ware_5_04_00_00\" -I\"/Users/charlie/workspace_ccstheia/try_spi_/device\" -I\"/Users/charlie/ti/C2000Ware_5_04_00_00/driverlib/f28003x/driverlib/\" -I\"/Applications/ti/ccs2002/ccs/tools/compiler/ti-cgt-c2000_22.6.1.LTS/include\" -DDEBUG -DRAM -I\"/Users/charlie/workspace_ccstheia/try_spi_/CPU1_RAM/syscfg\" -DF28003x=1",
+      "file"      : "/Users/charlie/workspace_ccstheia/try_spi_/device/f28003x_codestartbranch.asm"
+   },
+   {
+      "directory" : "/Users/charlie/workspace_ccstheia/try_spi_/CPU1_RAM",
+      "command"   : "clang++ -I\"/Users/charlie/workspace_ccstheia/try_spi_\" -I\"/Users/charlie/ti/C2000Ware_5_04_00_00\" -I\"/Users/charlie/workspace_ccstheia/try_spi_/device\" -I\"/Users/charlie/ti/C2000Ware_5_04_00_00/driverlib/f28003x/driverlib/\" -I\"/Applications/ti/ccs2002/ccs/tools/compiler/ti-cgt-c2000_22.6.1.LTS/include\" -DDEBUG -DRAM -I\"/Users/charlie/workspace_ccstheia/try_spi_/CPU1_RAM/syscfg\" -DF28003x=1",
+      "file"      : "/Users/charlie/workspace_ccstheia/try_spi_/CPU1_RAM/syscfg/board.c"
+   },
+   {
+      "directory" : "/Users/charlie/workspace_ccstheia/try_spi_/CPU1_RAM",
+      "command"   : "clang++ -I\"/Users/charlie/workspace_ccstheia/try_spi_\" -I\"/Users/charlie/ti/C2000Ware_5_04_00_00\" -I\"/Users/charlie/workspace_ccstheia/try_spi_/device\" -I\"/Users/charlie/ti/C2000Ware_5_04_00_00/driverlib/f28003x/driverlib/\" -I\"/Applications/ti/ccs2002/ccs/tools/compiler/ti-cgt-c2000_22.6.1.LTS/include\" -DDEBUG -DRAM -I\"/Users/charlie/workspace_ccstheia/try_spi_/CPU1_RAM/syscfg\" -DF28003x=1",
+      "file"      : "/Users/charlie/workspace_ccstheia/try_spi_/CPU1_RAM/syscfg/c2000ware_libraries.c"
+   },
+   {
+      "directory" : "/Users/charlie/workspace_ccstheia/try_spi_/CPU1_RAM",
+      "command"   : "clang++ -I\"/Users/charlie/workspace_ccstheia/try_spi_\" -I\"/Users/charlie/ti/C2000Ware_5_04_00_00\" -I\"/Users/charlie/workspace_ccstheia/try_spi_/device\" -I\"/Users/charlie/ti/C2000Ware_5_04_00_00/driverlib/f28003x/driverlib/\" -I\"/Applications/ti/ccs2002/ccs/tools/compiler/ti-cgt-c2000_22.6.1.LTS/include\" -DDEBUG -DRAM -I\"/Users/charlie/workspace_ccstheia/try_spi_/CPU1_RAM/syscfg\" -DF28003x=1",
+      "file"      : "/Users/charlie/workspace_ccstheia/try_spi_/SPI_INT.c"
+   }
+]

@@ -1,0 +1,112 @@
+/**
+ * These arguments were used when this file was generated. They will be automatically applied on subsequent loads
+ * via the GUI or CLI. Run CLI with '--help' for additional information on how to override these arguments.
+ * @cliArgs --board "/boards/LAUNCHXL_F280039C" --device "F28003x" --part "F28003x_100PZ" --package "100PZ" --context "system" --product "C2000WARE@5.04.00.00"
+ * @v2CliArgs --board "/boards/LAUNCHXL_F280039C" --device "TMS320F280037C" --package "100PZ" --context "system" --product "C2000WARE@5.04.00.00"
+ * @versions {"tool":"1.23.0+4000"}
+ */
+
+/**
+ * Import the modules used in this configuration.
+ */
+const gpio             = scripting.addModule("/driverlib/gpio.js", {}, false);
+const gpio1            = gpio.addInstance();
+const gpio2            = gpio.addInstance();
+const gpio3            = gpio.addInstance();
+const gpio4            = gpio.addInstance();
+const inputxbar_input  = scripting.addModule("/driverlib/inputxbar_input.js", {}, false);
+const inputxbar_input1 = inputxbar_input.addInstance();
+const sci              = scripting.addModule("/driverlib/sci.js", {}, false);
+const sci1             = sci.addInstance();
+const spi              = scripting.addModule("/driverlib/spi.js", {}, false);
+const spi1             = spi.addInstance();
+const spi2             = spi.addInstance();
+const sysctl           = scripting.addModule("/driverlib/sysctl.js");
+
+/**
+ * Write custom configuration values to the imported modules.
+ */
+gpio1.$name     = "led";
+gpio1.$hardware = system.deviceData.board.components.LED4;
+gpio1.direction = "GPIO_DIR_MODE_OUT";
+
+gpio2.$name                     = "sw";
+gpio2.useInterrupt              = true;
+gpio2.gpioPin.$assign           = "boosterpack1.11";
+gpio2.xint.enableInt            = true;
+gpio2.xint.registerInterrupts   = true;
+gpio2.xint.xInt.enableInterrupt = true;
+
+gpio3.$name             = "cs1";
+gpio3.direction         = "GPIO_DIR_MODE_OUT";
+gpio3.writeInitialValue = true;
+gpio3.initialValue      = 1;
+gpio3.gpioPin.$assign   = "boosterpack1.31";
+
+gpio4.$name             = "cs2";
+gpio4.direction         = "GPIO_DIR_MODE_OUT";
+gpio4.writeInitialValue = true;
+gpio4.initialValue      = 1;
+
+inputxbar_input1.$name         = "myINPUTXBARINPUT0";
+gpio2.xint.inputxbar           = inputxbar_input1;
+inputxbar_input1.inputxbarGpio = "GPIO23";
+
+sci1.$name                      = "mySCIA";
+sci1.$hardware                  = system.deviceData.board.components.BP_SITE_1.subComponents.SCI;
+sci1.selectRegisteredInterrupts = ["registerRxInt"];
+sci1.rxFifo                     = "SCI_FIFO_RX1";
+sci1.enabledFIFOInterrupts      = ["SCI_INT_RXFF"];
+sci1.rxQual.$name               = "myGPIOQUAL8";
+sci1.txQual.$name               = "myGPIOQUAL9";
+sci1.sciRXInt.enableInterrupt   = true;
+
+spi1.emulationMode            = "SPI_EMULATION_STOP_AFTER_TRANSMIT";
+spi1.useCase                  = "CUSTOM";
+spi1.$name                    = "mySPIM";
+spi1.$hardware                = system.deviceData.board.components.BP_SITE_1.subComponents.SPI;
+spi1.useInterfacePins         = ["SPI@_CLK","SPI@_SIMO","SPI@_SOMI","SPI@_STE"];
+spi1.mode                     = "SPI_MODE_CONTROLLER";
+spi1.registerInterrupts       = true;
+spi1.clkQual.$name            = "myGPIOQUAL1";
+spi1.picoQual.$name           = "myGPIOQUAL3";
+spi1.pociQual.$name           = "myGPIOQUAL2";
+spi1.pteQual.$name            = "myGPIOQUAL0";
+spi1.spiRXInt.enableInterrupt = true;
+spi1.spiTXInt.enableInterrupt = true;
+
+spi2.$hardware                = system.deviceData.board.components.BP_SITE_2.subComponents.SPI;
+spi2.$name                    = "mySPIS";
+spi2.useCase                  = "CUSTOM";
+spi2.useInterfacePins         = ["SPI@_CLK","SPI@_SIMO","SPI@_SOMI","SPI@_STE"];
+spi2.emulationMode            = "SPI_EMULATION_STOP_AFTER_TRANSMIT";
+spi2.registerInterrupts       = true;
+spi2.enabledFIFOInterrupts    = ["SPI_INT_RXFF"];
+spi2.rxFifo                   = "SPI_FIFO_RX16";
+spi2.clkQual.$name            = "myGPIOQUAL6";
+spi2.picoQual.$name           = "myGPIOQUAL4";
+spi2.pociQual.$name           = "myGPIOQUAL5";
+spi2.pteQual.$name            = "myGPIOQUAL7";
+spi2.spiRXInt.enableInterrupt = true;
+spi2.spiTXInt.enableInterrupt = true;
+
+/**
+ * Pinmux solution for unlocked pins/peripherals. This ensures that minor changes to the automatic solver in a future
+ * version of the tool will not impact the pinmux you originally saw.  These lines can be completely deleted in order to
+ * re-solve from scratch.
+ */
+gpio1.gpioPin.$suggestSolution        = "boosterpack2.53";
+gpio4.gpioPin.$suggestSolution        = "boosterpack2.58";
+sci1.sci.$suggestSolution             = "SCIA";
+sci1.sci.sci_rxPin.$suggestSolution   = "boosterpack1.3";
+sci1.sci.sci_txPin.$suggestSolution   = "boosterpack1.4";
+spi1.spi.$suggestSolution             = "SPIA";
+spi1.spi.spi_picoPin.$suggestSolution = "boosterpack1.15";
+spi1.spi.spi_pociPin.$suggestSolution = "boosterpack1.14";
+spi1.spi.spi_clkPin.$suggestSolution  = "boosterpack1.7";
+spi1.spi.spi_ptePin.$suggestSolution  = "boosterpack1.19";
+spi2.spi.$suggestSolution             = "SPIB";
+spi2.spi.spi_picoPin.$suggestSolution = "boosterpack2.55";
+spi2.spi.spi_pociPin.$suggestSolution = "boosterpack2.54";
+spi2.spi.spi_clkPin.$suggestSolution  = "boosterpack2.47";
+spi2.spi.spi_ptePin.$suggestSolution  = "boosterpack2.59";

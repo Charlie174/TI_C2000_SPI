@@ -1,0 +1,58 @@
+/**
+ * These arguments were used when this file was generated. They will be automatically applied on subsequent loads
+ * via the GUI or CLI. Run CLI with '--help' for additional information on how to override these arguments.
+ * @cliArgs --board "/boards/LAUNCHXL_F280039C" --device "F28003x" --part "F28003x_100PZ" --package "100PZ" --context "system" --product "C2000WARE@5.04.00.00"
+ * @v2CliArgs --board "/boards/LAUNCHXL_F280039C" --device "TMS320F280039C" --package "100PZ" --context "system" --product "C2000WARE@5.04.00.00"
+ * @versions {"tool":"1.23.0+4000"}
+ */
+
+/**
+ * Import the modules used in this configuration.
+ */
+const gpio             = scripting.addModule("/driverlib/gpio.js", {}, false);
+const gpio1            = gpio.addInstance();
+const gpio2            = gpio.addInstance();
+const inputxbar_input  = scripting.addModule("/driverlib/inputxbar_input.js", {}, false);
+const inputxbar_input1 = inputxbar_input.addInstance();
+const sci              = scripting.addModule("/driverlib/sci.js", {}, false);
+const sci1             = sci.addInstance();
+const sysctl           = scripting.addModule("/driverlib/sysctl.js");
+
+/**
+ * Write custom configuration values to the imported modules.
+ */
+gpio1.$name     = "led";
+gpio1.$hardware = system.deviceData.board.components.LED4;
+gpio1.direction = "GPIO_DIR_MODE_OUT";
+
+gpio2.$name                     = "sw";
+gpio2.useInterrupt              = true;
+gpio2.gpioPin.$assign           = "boosterpack1.11";
+gpio2.xint.enableInt            = true;
+gpio2.xint.registerInterrupts   = true;
+gpio2.xint.intType              = "GPIO_INT_TYPE_RISING_EDGE";
+gpio2.xint.xInt.enableInterrupt = true;
+
+inputxbar_input1.$name         = "myINPUTXBARINPUT0";
+gpio2.xint.inputxbar           = inputxbar_input1;
+inputxbar_input1.inputxbarGpio = "GPIO23";
+
+sci1.$hardware                  = system.deviceData.board.components.BP_SITE_1.subComponents.SCI;
+sci1.$name                      = "mySCIA";
+sci1.enabledFIFOInterrupts      = ["SCI_INT_RXFF"];
+sci1.selectRegisteredInterrupts = ["registerRxInt"];
+sci1.enabledInterrupts          = ["SCI_INT_RXRDY_BRKDT"];
+sci1.rxFifo                     = "SCI_FIFO_RX1";
+sci1.rxQual.$name               = "myGPIOQUAL0";
+sci1.txQual.$name               = "myGPIOQUAL1";
+sci1.sciRXInt.enableInterrupt   = true;
+
+/**
+ * Pinmux solution for unlocked pins/peripherals. This ensures that minor changes to the automatic solver in a future
+ * version of the tool will not impact the pinmux you originally saw.  These lines can be completely deleted in order to
+ * re-solve from scratch.
+ */
+gpio1.gpioPin.$suggestSolution      = "boosterpack2.53";
+sci1.sci.$suggestSolution           = "SCIA";
+sci1.sci.sci_rxPin.$suggestSolution = "boosterpack1.3";
+sci1.sci.sci_txPin.$suggestSolution = "boosterpack1.4";

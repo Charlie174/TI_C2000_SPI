@@ -1,0 +1,20 @@
+{
+    "interruptInfo" : [
+        {
+            "interruptName": "INT_sw_XINT",
+            "interruptHandler": "INT_sw_XINT_ISR"
+        },
+        {
+            "interruptName": "INT_mySCIA_RX",
+            "interruptHandler": "INT_mySCIA_RX_ISR"
+        },
+        {
+            "interruptName": "INT_mySPIS_RX",
+            "interruptHandler": "INT_mySPIS_RX_ISR"
+        },
+        {
+            "interruptName": "INT_mySPIS_TX",
+            "interruptHandler": "INT_mySPIS_TX_ISR"
+        }
+    ]
+}
